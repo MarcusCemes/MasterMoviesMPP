@@ -1,2 +1,2 @@
-# MasterMoviesMPP
-The MasterMovies Media Processing Platform (needs a name). Handles backend video management for websites that let users upload videos
+# MasterMovies Media Processing Platform
+## A super lightweight backend solution, with Python sauce doing the magic
