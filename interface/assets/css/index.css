@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:600');
+
+.login-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    /* for the FAB */
+    transition: opacity 250ms;
+    background-color: #FFF;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-wrapper.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.login-container {
+    position: relative;
+    padding: 32px;
+    max-width: 400px;
+    width: 80%;
+}
+
+.login-container h3,
+.login-container h5 {
+    text-align: center;
+    margin-top: 0;
+    font-family: Raleway;
+
+}
+
+.login-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 4;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: opacity 200ms;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-overlay:not(.active) {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.login-status {
+    position: absolute;
+    bottom: calc(100% + 25px);
+    color: #FFF;
+    width: 80%;
+    padding: 10px;
+}
+
+
+nav {
+    user-select: none;
+}
+
+.logout {
+    line-height: inherit;
+    height: 100%;
+    padding: 0 20px;
+    color: white;
+}
+
+.refresh.switch {
+    margin-right: 25px;
+    font-weight: bold;
+}
+
+.refresh.switch label {
+    color: #FFF;
+}
+
+
+.refresh-icon {
+    position: relative;
+    height: 24px;
+    width: 24px;
+}
+
+.refresh-icon a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 175%;
+    transition: opacity 0.5s;
+}
+
+.refresh-icon.play .play,
+.refresh-icon.pause .pause {
+    opacity: 1;
+}
+
+.refresh-icon.pause .play,
+.refresh-icon.play .pause {
+    opacity: 0;
+}
+
+.refresh-icon .play {
+    animation: rotate_slowly 5s linear 0s infinite normal;
+}
+
+.refresh-icon .pause {
+    transform: translate(-50%, -50%);
+}
+
+@keyframes rotate_slowly {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg)
+    }
+    to {
+        transform: translate(-50%, -50%) rotate(360deg)
+    }
+}
+
+
+.landing {
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    overflow-y: scroll;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.landing::-webkit-scrollbar {
+    width: 5px;
+}
+
+.landing::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.select-bar {
+    height: 50px;
+    min-height: 50px;
+    padding: 0px;
+
+    display: flex;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+.select-bar .title {
+    color: #FFF;
+    font-size: 1.4em;
+    font-weight: bold;
+    padding: 0 20px;
+}
+
+.select-bar .fill {
+    flex: 1;
+}
+
+.select-bar a.btn-flat {
+    padding: 0;
+    margin: 0 10px;
+}
+
+.select-bar .dropdown-trigger {
+    border: 1px solid #FFF;
+}
+
+.select-bar div.seperator {
+    height: 100%;
+    border-left: 1px solid #FFF;
+    margin: 0 10px;
+    height: 80%;
+}
+
+.select-bar i.material-icons {
+    font-size: 28px;
+}
+
+.select-bar .dropdown-trigger {
+    width: 150px;
+}
+
+.page {
+    flex: 1;
+}
+
+#dashboard {
+    user-select: none;
+}
+
+.dashboard-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.dashboard-status span {
+    font-size: 4em;
+    margin: 50px 20px;
+    position: relative;
+    top: -25px;
+}
+
+@media (max-width: 1300px) {
+    .dashboard-status span {
+        font-size: 3em;
+    }
+}
+
+@media (max-width: 800px) {
+    .dashboard-status span {
+        font-size: 2em;
+    }
+}
+
+#dashboard .card-panel {
+    padding: 2em;
+    font-size: 120%;
+    text-align: center;
+    
+    display: flex;
+    align-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+
+}
+
+#dashboard .main-figure {
+    font-weight: bold;
+    font-size: 400%;
+}
+
+table {
+    overflow-x: auto;
+    table-layout: fixed;
+}
+
+.fixed-action-btn {
+    user-select: none;
+}
+
+.policy-switch .switch {
+    width: max-content;
+    margin: 0 auto;
+    position: relative;
+}
+
+.policy-warning {
+    position: absolute;
+    left: calc(100% + 25px);
+    opacity: 0;
+    top: 0;
+    transition: opacity 0.5s;
+    width: max-content;
+
+    display: flex;
+    align-items: center;
+}
+
+.policy-warning.active {
+    opacity: 1;
+}
+
+
+.landing.action .select-bar {
+    opacity: 1;
+}
+
+.landing.action tr {
+    cursor: pointer;
+}
+
+.landing:not(.action) .selection {
+    display: none;
+}
+
+.landing.action .refresh {
+    display: none;
+}
+
+.landing:not(.ja-delete) .ja-delete,
+.landing:not(.na-authorise) .na-authorise,
+.landing:not(.na-deauthorise) .na-deauthorise,
+.landing:not(.na-terminate) .na-terminate {
+    display: none;
+}

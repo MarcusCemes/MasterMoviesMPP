@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="assets/css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="assets/css/index.css" media="screen,projection" />
+
+    <link rel="shortcut icon" href="assets/icon.png" />
+    <title>MasterMovies MPP</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body ng-app="landing_app" ng-controller="landing_controller">
+
+    <div class="login-wrapper">
+        <div class="login-container z-depth-2 hoverable">
+            <h3>MasterMovies</h3>
+            <h5>Media Processing Platform</h5>
+            <div>
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">account_circle</i>
+                            <input id="username" type="text" class="validate" required>
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <i class="material-icons prefix">vpn_key</i>
+                            <input id="password" type="password" class="validate" required>
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <button id="submit" name="submit" class="btn waves-effect waves-light disabled right" type="submit">Submit<i class="material-icons right">send</i>
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="login-overlay active">
+                <div class="preloader-wrapper big active">
+                    <div class="spinner-layer spinner-blue">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-red">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-yellow">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+
+                    <div class="spinner-layer spinner-green">
+                        <div class="circle-clipper left">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="gap-patch">
+                            <div class="circle"></div>
+                        </div>
+                        <div class="circle-clipper right">
+                            <div class="circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-status scale-transition scale-out center-align"></div>
+        </div>
+
+    </div>
+
+    <div class="landing">
+
+
+        <nav class="nav-extended blue">
+            <div class="nav-wrapper">
+                <div ng-click="logout()" class="logout waves-effect btn-flat left">
+                    <i class="material-icons left">exit_to_app</i> Logout
+                </div>
+
+                <a class="brand-logo center ">MasterMovies</a>
+
+                <div class="switch refresh waves-effect btn-flat white-text {{refresh === true ? 'purple' : 'grey'}} right" ng-click="refresh = !refresh">
+                    <div class="valign-wrapper">
+                        <div class="refresh-icon {{refresh === true ? 'play' : 'pause'}}">
+                            <a class="material-icons play">autorenew</a>
+                            <a class="material-icons pause">pause</a>
+                        </div>
+                        <span style="margin: 0 20px 0 5px">Refresh</span>
+                        <label>Off<input ng-model="refresh" type="checkbox"><span class="lever"></span>On</label>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-content">
+                <ul class="tabs tabs-transparent tabs-fixed-width">
+                    <li class="tab"><a href="#dashboard">Dashboard</a></li>
+                    <li class="tab"><a href="#jobs">Jobs</a></li>
+                    <li class="tab"><a href="#policies">Policies</a></li>
+                    <li class="tab"><a href="#nodes">Nodes</a></li>
+                    <li class="tab"><a href="#users">Users</a></li>
+                </ul>
+            </div>
+        </nav>
+
+
+        <div class="select-bar teal lighten-1">
+
+            <div class="title">Actions bar</div>
+
+            <div class="fill"></div>
+
+            <a class='dropdown-trigger btn-flat waves-effect white-text center-align' data-target='action-dropdown'>Actions</a>
+
+            <!-- Dropdown Structure -->
+            <ul id='action-dropdown' class='dropdown-content'>
+                <li><a action="select-none" class=" blue-text">Select None</a></li>
+                <li><a action="select-all" class=" blue-text">Select All</a></li>
+                <span class="ja-delete">
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a action="delete-selected-jobs" class="red-text">Delete Selected</a></li>
+                    <li><a action="delete-all-jobs" class="red-text">Delete All</a></li>
+                </span>
+                <span class="na-authorise">
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a action="enable-selected-nodes" class="red-text">Authorise Selected</a></li>
+                    <li><a action="enable-all-nodes" class="red-text">Authorise All</a></li>
+                </span>
+                <span class="na-deauthorise">
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a action="disable-selected-nodes" class="red-text">Deauthorise Selected</a></li>
+                    <li><a action="disable-all-nodes" class="red-text">Deauthorise All</a></li>
+                </span>
+                <span class="na-terminate">
+                    <li class="divider" tabindex="-1"></li>
+                    <li><a action="delete-selected-nodes" class="red-text">Terminate Selected</a></li>
+                    <li><a action="delete-all-nodes" class="red-text">Terminate All</a></li>
+                </span>
+            </ul>
+
+            <div class="seperator"></div>
+
+            <a class="waves-effect waves-white btn-flat white-text" ng-click="stop_action()"><i class="material-icons">clear</i></a>
+        </div>
+
+        <div id="dashboard" class="page container">
+            <div class="row">
+                
+                <div class="col s12 dashboard-status">
+                    <span ng-show="!errors()" class="material-icons green-text">thumb_up</span>
+                    <span ng-show="!errors()" class="green-text">System is active!</span>
+                    <span ng-show="errors()" class="material-icons red-text">thumb_down</span>
+                    <span ng-show="errors()" class="red-text">Jobs are reporting failure</span>
+                </div>
+                
+                <div class="card-panel col s8 offset-s2 m5 xl3 z-depth-4">
+                    <h1>{{get_active_jobs()}}</h1>
+                    <p>Active Jobs</p>
+                    
+                </div>
+                
+                <div class="card-panel col s8 offset-s2 m5 offset-m1 xl3 offset-xl1 z-depth-4">
+                    <h1>{{get_nodes()}}</h1>
+                    <p>Connected nodes</p>
+                    
+                </div>
+                
+                <div class="card-panel col s8 offset-s2 m5 xl3 offset-xl1 z-depth-4">
+                    <h1>{{get_saturation()}}</h1>
+                    <p>Node saturation</p>
+                    
+                </div>
+                
+            </div>
+
+
+        </div>
+
+        <div id="jobs" class="page">
+
+            <table id="jobs-table" class="bordered highlight centered">
+                <thead>
+                    <tr>
+                        <th class="selection">Select</th>
+                        <th>Job ID</th>
+                        <th>Status</th>
+                        <th>Source</th>
+                        <th>Completion</th>
+                        <th>Date Added</th>
+                        <th>Date Complete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="job in data.jobs" ng-click="selecting ? selections[job.jobID] = !selections[job.jobID] : false">
+                        <td class="selection center">
+                            <label><input ng-model="selections[job.jobID]" type="checkbox" class="filled-in"/><span></span></label>
+                        </td>
+                        <td>{{job.jobID}}</td>
+                        <td>{{get_key(status_codes, job.status)}}</td>
+                        <td>{{job.sourceName}}</td>
+                        <td>
+                            <div class="progress {{state[job.jobID]}} lighten-4">
+                                <div class="determinate {{state[job.jobID]}} lighten-1" style="width:{{completion[job.jobID]}}%"></div>
+                            </div>
+                        </td>
+                        <td>{{job.dateAdded}}</td>
+                        <td>{{job.dateCompleted}}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="job-fab" class="fixed-action-btn scale-transition">
+                <a class="btn-floating btn-large teal">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                    <li>
+                        <button class="btn modal-trigger btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="New job" data-target="new-job-modal"><i class="large material-icons">add</i></button>
+                    </li>
+                    <li>
+                        <button id="job-delete" ng-click="job_delete();" class="btn btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Remove job"><i class="large material-icons">delete</i></button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div id="policies" class="page container center-align">
+            <div class="policy-switch center-align">
+                <div class="switch">Modify Policies&nbsp;&nbsp;&nbsp;
+                    <label>Lock<input ng-model="policy_update" type="checkbox">
+                <span class="lever"></span>Unlock</label>
+
+                    <div class="policy-warning{{policy_update ? ' active' : ''}}">
+                        <i class="material-icons red-text">warning</i>&nbsp;&nbsp;<a class="red-text">Warning! These are global policies for all nodes!</a>
+                    </div>
+                </div>
+            </div>
+            <table class="bordered highlight centered">
+                <thead>
+                    <tr>
+                        <th>Policy</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="policy in data.policies" ng-switch on="policy.value_type">
+                        <td>{{pretty_policies[policy.policy] || policy.policy}}</td>
+
+                        <td ng-show="!policy_update && policy.value_type == 'boolean'">
+                            <i class="material-icons {{policy.value ? 'green' : 'red'}}-text">{{policy.value ? 'check' : 'close'}}</i>
+                        </td>
+                        <td ng-show="!policy_update && policy.value_type != 'boolean'">
+                            <h6>{{policy.value}}</h6>
+                        </td>
+                        <td ng-show="policy_update" ng-switch-when="boolean">
+                            <div class="switch"><label>Disable<input ng-model="new_policies[policy.policy]" type="checkbox"><span class="lever"></span>Enable</label></div>
+                        </td>
+                        <td ng-show="policy_update" ng-switch-when="integer">
+                            <input style="width: 200px" onkeypress="if (event.keyCode==13) this.blur();" type="number" ng-model="new_policies[policy.policy]" ng-model-options="{ updateOn: 'blur'}" min="0">
+                        </td>
+                        <td ng-show="policy_update" ng-switch-default>
+                            <input onkeypress="if (event.keyCode==13) this.blur();" style="width: 200px" ng-model="new_policies[policy.policy]" ng-model-options="{ updateOn: 'blur'}">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="nodes" class="page">
+            <table class="bordered highlight centered">
+                <thead>
+                    <tr>
+                        <th class="selection">Select</th>
+                        <th>Node ID</th>
+                        <th>Type</th>
+                        <th>Last Activity</th>
+                        <th>Working</th>
+                        <th>Authorised</th>
+                        <th>Terminating</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="node in data.nodes" ng-click="selecting ? selections[node.nodeID] = !selections[node.nodeID] : false">
+                        <td class="selection center">
+                            <label><input ng-model="selections[node.nodeID]" type="checkbox" class="filled-in"/><span></span></label>
+                        </td>
+                        <td>{{node.nodeID}}</td>
+                        <td>{{get_key(node_type, node.type)}}</td>
+                        <td>{{node.lastAccess}}</td>
+                        <td><i class="material-icons {{node.isActive == '1' ? 'green' : 'red'}}-text">{{node.isActive == '1' ? 'work' : 'local_hotel'}}</i></td>
+                        <td><i class="material-icons {{node.authorise == '1' ? 'green' : 'red'}}-text">{{node.authorise == '1' ? 'check' : 'close'}}</i></td>
+                        <td><i class="material-icons {{node.terminate == '1' ? 'green' : 'red'}}-text">{{node.terminate == '1' ? 'check' : 'close'}}</i></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="node-fab" class="fixed-action-btn scale-transition">
+                <a class="btn-floating btn-large teal">
+                    <i class="large material-icons">mode_edit</i>
+                </a>
+                <ul>
+                    <li>
+                        <button ng-click="node_authorise();" class="btn btn-floating green tooltipped" data-position="left" data-delay="50" data-tooltip="Authorise nodes"><i class="large material-icons">work</i></button>
+                    </li>
+                    <li>
+                        <button ng-click="node_deauthorise();" class="btn btn-floating purple tooltipped" data-position="left" data-delay="50" data-tooltip="Deauthorise nodes"><i class="large material-icons">block</i></button>
+                    </li>
+                    <li>
+                        <button ng-click="node_terminate();" class="btn btn-floating red tooltipped" data-position="left" data-delay="50" data-tooltip="Terminate nodes"><i class="large material-icons">delete_sweep</i></button>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div id="users" class="page">
+
+        </div>
+
+    </div>
+
+    <div id="new-job-modal" class="modal">
+        <div class="modal-content">
+            <h4>Create a new job</h4>
+            <p>To create a new job, specify the full name of the source file, which must already be present in the source directory of the appliation working path.</p>
+            <p>The file will enter the video processing pipeline, where it will transcoded or put into quarantine upon failure.</p>
+            <br/>
+            <div class="input-field col s10">
+                <i class="material-icons prefix">insert_drive_file</i>
+                <input id="new-job-filename" type="text" class="validate" required ng-enter="submit_new_job(true)">
+                <label for="new-job-filename">Filename</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <a class="modal-action modal-close waves-effect waves-green btn-flat teal-text" ng-click="submit_new_job(false)" d='new-job-submit'>Submit</a>
+        </div>
+    </div>
+
+    <div id="delete-confirm-modal" class="modal">
+        <div class="modal-content">
+            <h4>Confirm delete?</h4>
+            <p>Are you sure you want to delete these videos?</p>
+            <p>This action is immediate and irreversible.</p>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-action modal-close waves-effect waves-green btn-flat">CANCEL</a>
+            <a ng-click="confirm_action()" id="confirm-delete-button" class="modal-action modal-close waves-effect waves-green btn-flat red-text">DELETE</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+    <script type="text/javascript" src="assets/js/index.js"></script>
+</body>
+
+</html>
