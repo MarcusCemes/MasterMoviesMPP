@@ -6,8 +6,8 @@ install:
 services:
   - mysql
 before_install:
-  - sudo mysql -e "CREATE DATABASE MasterMoviesMPP;"
-  - sudo mysql -e "USE MasterMoviesMPP;" < MasterMoviesMPP.sql
+  - sudo mysql -u root "CREATE DATABASE MasterMoviesMPP;"
+  - sudo mysql -u root "USE MasterMoviesMPP;" < MasterMoviesMPP.sql
 script:
   - python 'MasterMoviesMPP Node.py' ingest
   - python 'MasterMoviesMPP Node.py' transcode
