@@ -6,8 +6,7 @@ install:
 services:
   - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE MasterMoviesMPP;'
-  - mysql -e MasterMvoiesMPP < MasterMoviesMPP.sql
+  - mysql -e 'CREATE DATABASE MasterMoviesMPP;USE MasterMoviesMPP;' < MasterMoviesMPP.sql
 script:
   - python 'MasterMoviesMPP Node.py' ingest
   - python 'MasterMoviesMPP Node.py' transcode
