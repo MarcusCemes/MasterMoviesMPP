@@ -329,7 +329,8 @@ if not pathlib.Path('config.ini').is_file():
 # This is the command line argument parser
 programDescription = "MasterMovies Media Processing Platform, designed for TurboThread.com\nCopyright (c) 2018 Marcus Cemes\n\nThis program must be launched in one of three modes: Ingest, Transcode or Export. At least one of each is required to run in parallel for a complete system.\nA database connection is also required, specified in the config file."
 parser = argparse.ArgumentParser(description=programDescription, formatter_class=argparse.RawTextHelpFormatter)
-parser.add_argument("node_type", choices=("ingest", "transcode", "export", "build"), help="the selected mode the program should start in.\nOptions available: 'ingest', 'transcode' or 'export'.", metavar="node_type")
+parser.add_argument("node_type", choices=("ingest", "transcode", "export"), help="the selected mode the program should start in.\nOptions available: 'ingest', 'transcode' or 'export'.", metavar="node_type")
+parser.add_argument('--build', action='store_true', metavar="build")
 args = parser.parse_args()
 
 cfg = configparser.ConfigParser()
@@ -338,6 +339,7 @@ cfg.read('config.ini')
 version = '1.3'  # The program version
 
 node_type = args.node_type.lower()
+is_build = args.build
 is_verbose = cfg['Program'].getboolean('verbose', True)
 server = cfg['Database'].get('server', 'localhost')
 port = cfg['Database'].getint('port', 3306)
@@ -352,7 +354,7 @@ move_after_export = cfg['Path'].getboolean('move_after_export', False)
 move_after_export_dir = cfg['Path'].get('move_after_export_dir')
 
 # These are runtime global variables. Best not to touch.
-node_types = {'ingest':0, 'transcode':1,'export':2, 'build':3}
+node_types = {'ingest':0, 'transcode':1,'export':2}
 work_paths = {}
 unique_id = None
 policies = {} # Global polices
