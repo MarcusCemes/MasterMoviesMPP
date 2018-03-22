@@ -9,6 +9,6 @@ before_install:
   - sudo mysql -e "CREATE DATABASE MasterMoviesMPP;"
   - sudo mysql -e "USE MasterMoviesMPP;" < MasterMoviesMPP.sql
 script:
-  - pytest 'MasterMoviesMPP Node.py' ingest
-  - pytest 'MasterMoviesMPP Node.py' transode
-  - pytest 'MasterMoviesMPP Node.py' export
+  - py pytest.py 'MasterMoviesMPP Node.py' ingest
+  - py pytest.py 'MasterMoviesMPP Node.py' transode
+  - py pytest.py 'MasterMoviesMPP Node.py' export
