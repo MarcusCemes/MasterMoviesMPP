@@ -3,6 +3,9 @@
   "description": "Simple media processign platform powered by Python",
   "author": Marcus Cemes",
   "version": "1.4.0",
+  "devDependencies": {
+    "pytest": "^3.4.2"
+  },
   "scripts": {
     "test": "pytest MasterMoviesMPP Node.py"
   }
