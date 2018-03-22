@@ -1,2 +1,3 @@
 # MasterMovies Media Processing Platform
+![Build](https://img.shields.io/travis/MarcusCemes/MasterMoviesMPP.svg?style=flat-square) ![Downloads](https://img.shields.io/github/downloads/MarcusCemes/MasterMoviesMPP/total.svg?style=flat-square) ![GitHub release](https://img.shields.io/github/release/MarcusCemes/MasterMoviesMPP.svg?style=flat-square) ![License](https://img.shields.io/github/license/MarcusCemes/MasterMoviesMPP.svg?style=flat-square) ![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)
 ## A super lightweight backend solution, with Python sauce doing the magic

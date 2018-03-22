@@ -340,7 +340,6 @@ version = '1.3'  # The program version
 
 node_type = args.node_type.lower()
 is_build = args.build
-print(is_build)
 is_verbose = cfg['Program'].getboolean('verbose', True)
 server = cfg['Database'].get('server', 'localhost')
 port = cfg['Database'].getint('port', 3306)
