@@ -1,0 +1,9 @@
+{
+  "name": "MasterMovie MPP",
+  "description": "Simple media processign platform powered by Python",
+  "author": Marcus Cemes",
+  "version": "1.4.0",
+  "scripts": {
+    "test": "pytest MasterMoviesMPP Node.py"
+  }
+}
