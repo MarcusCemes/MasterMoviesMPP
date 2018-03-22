@@ -352,7 +352,7 @@ move_after_export = cfg['Path'].getboolean('move_after_export', False)
 move_after_export_dir = cfg['Path'].get('move_after_export_dir')
 
 # These are runtime global variables. Best not to touch.
-node_types = {'ingest':0, 'transcode':1,'export':2}
+node_types = {'ingest':0, 'transcode':1,'export':2, 'build':3}
 work_paths = {}
 unique_id = None
 policies = {} # Global polices
@@ -896,6 +896,9 @@ while True:
 
                     deauthorise()
                     continue
+        else if (node_type == 'build'):
+            verbose('Build complete. Terminating application.')
+            os._exit(0)
 
     if authorised:
         deauthorise()

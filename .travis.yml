@@ -11,6 +11,4 @@ before_install:
   - echo "SHOW DATABASES;" | mysql
   - sudo mkdir work work/source work/ingest work/transcode work/export work/media
 script:
-  - python 'MasterMoviesMPP Node.py' ingest
-  - python 'MasterMoviesMPP Node.py' transcode
-  - python 'MasterMoviesMPP Node.py' export
+  - python 'MasterMoviesMPP Node.py' build
