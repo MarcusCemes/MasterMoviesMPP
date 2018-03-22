@@ -896,7 +896,7 @@ while True:
 
                     deauthorise()
                     continue
-        else if (node_type == 'build'):
+        elif (node_type == 'build'):
             verbose('Build complete. Terminating application.')
             os._exit(0)
 
