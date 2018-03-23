@@ -1,13 +1,30 @@
 {
   "name": "MasterMovie MPP",
-  "description": "Simple media processign platform powered by Python",
-  "author": "Marcus Cemes",
   "version": "1.4.0",
+  "description": "A Python-powered Media Processing Platform",
+  "license": "GPL-3.0",
+  "readmeFilename": "README.md",
+  "author": {
+    "name": "Marucs Cemes",
+    "email": "20288819+MarcusCemes@users.noreply.github.com"
+  },
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/MarcusCemes/MasterMovieSMPP.git"
+    },
+    "bugs": {
+      "url": "https://github.com/MarcusCemes/MasterMovieSMPP/issues"
+    },
   "devDependencies": {
     "python": "^3.6.4",
     "ffmpeg": "^3.4.2"
   },
   "scripts": {
     "test": "python 'MasterMoviesMPP Node.py' ingest"
-  }
+  },
+  "tags": [
+    "Python",
+    "Video Processing",
+    "Streaming"
+  ]
 }
