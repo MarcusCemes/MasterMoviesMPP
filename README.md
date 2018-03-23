@@ -1,4 +1,4 @@
-available# MasterMovies Media Processing Platform
+# MasterMovies Media Processing Platform
 
 [![Build](https://img.shields.io/travis/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://travis-ci.org/MarcusCemes/MasterMoviesMPP)
 [![Downloads](https://img.shields.io/github/downloads/MarcusCemes/MasterMoviesMPP/total.svg?style=flat-square)]()
@@ -21,7 +21,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 *MasterMoviesMPP* is cross-platform, however it requires Python, FFmpeg and MySQL. This project is designed to run on Linux, but is completely compatible with Windows.
-The following bash commands are compatible with Ubuntu, and Ubuntu Server. You may need to adapt to your Linux distribution.
+The following bash commands work on Ubuntu, and Ubuntu Server. You may need to adapt them to your Linux distribution.
 
 In order to compile and run this program, you will need [Python 3](https://www.python.org/) and the bundled PyPi package manager. This is already installed on most Linux distributions.
 
@@ -48,6 +48,7 @@ $ sudo mysql_secure_installation  # This will allow you to create a root account
 ### Installing
 
 This section will guide you through the installation process, as well as setting up dependencies and the database.
+
 Download or clone this repository onto your computer. The files you need to run the program are:
 
 * MasterMoviesMPP Node.py  (this can be renamed)
@@ -58,7 +59,7 @@ For the setup process, you will also need:
 * MasterMoviesMPP.sql
 * requirements.txt
 
-##### Python Dependencies
+#### Python Dependencies
 
 To install dependencies from the *requirements.txt* file, run:
 ```bash
@@ -66,7 +67,7 @@ $ pip install -r requirements.txt
 ```
 You may need to use sudo if you don't have write permissions, but this isn't [recommended](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
 
-##### MySQL Database
+#### MySQL Database
 
 You will need to set up a MySQL database, containing a specific database structure included in the *MasterMoviesMPP.sql* file. You may import this through tools such as PHPMyAdmin, or you can run the list of statements directly from the terminal.
 
@@ -86,7 +87,7 @@ mysql> FLUSH PRIVILEGES;
 mysql> exit
 ```
 
-Lastly , if you plan on running nodes somewhere other than localhost, you will need to open the SQL server to the local network by editing the *my.cnf*, usually found somewhere like /etc/mysql/my.cnf (this depends on your Linux distribution). Replace the line
+Lastly , if you plan on running nodes somewhere other than localhost, you will need to open the SQL server to the local network by editing the *my.cnf*, usually found somewhere like */etc/mysql/my.cnf* (this depends on your Linux distribution). Replace the line
 ```
 bind-address = 127.0.0.1
 # with:
@@ -96,11 +97,12 @@ bind-address = 127.0.0.1
 That's it! Restart the service with
 ```bash
 sudo service mysql restart
-
-Any references to 'tables' in this readme are references to tables that were imported to the database.
 ```
 
-##### config.ini
+Any references to 'tables' in this readme are references to tables that were imported to the database.
+
+
+#### config.ini
 
 Lastly, you will need to edit the *config.ini* file. Replace the database connection options with the ones you set up, and also the work directory with the path to the following folder structure somewhere on the computer or on the network:
 * [work]  (name is configurable)
@@ -112,7 +114,7 @@ Lastly, you will need to edit the *config.ini* file. Replace the database connec
 
 The source folder can be located elsewhere (if specified by the config.ini file).
 Finished jobs will be available in the export folder. Processing a video file called video.mp4 with one 1080p60 output will make it available as:
-[work]/export/*UUID as hex*/*video*1080p60.mp4 (see [UUIDs](#UUID-Ecosystem))
+[work]/export/*UUIDashex*/*video*1080p60.mp4 (see [UUIDs](#uuid-ecosystem))
 
 Exported video files may also be copied to a delivery folder (again, by specification in the *config.ini* file). This makes them more easily available as (and allows the program purge the export work folders):
 [delivery]/*video*1080p60.mp4
@@ -123,11 +125,11 @@ To add a node to the system, run the python file from the command line with one 
 ```bash
 $ python3 'MasterMoviesMPP Node.py' [ingest/transcode/export]
 ```
-The program will attempt to create a connection to the database (see [setting up the database](#MySQL-Database)). Once a successful connection has been made, the node will register itself in the node table.
+The program will attempt to create a connection to the database (see [setting up the database](#mysql-database)). Once a successful connection has been made, the node will register itself in the node table.
 
 All further node operations are handled by the database. Nodes may be enabled, disabled and terminated by modifying its entry in the node table. To terminate the node, you may also stop the script using Ctrl+C on the terminal window *when the node is not working*. This will ensure that the program picks up the shutdown and exits safely, unregistering itself from the database.
 
-##### Adding a job
+### Adding a job
 
 Adding a job to the queue is as simple as moving the file to the *[source]* directory and creating a row entry in the job table:
 ```sql
@@ -140,7 +142,7 @@ Once the job is complete, the *isComplete* column of the job row will be set to 
 
 Completed or failed jobs will be reported as a failure on the database, and the work folders will be purged. Upon failure, the source video file is moved to [work]/quarantine/, and upon completion it is deleted altogether.
 
-##### Outputs
+#### Outputs
 
 To add/modify outputs, you will need to change the *output* table. Each row corresponds to one encode output.
  * active - Whether the output should be processed
@@ -158,7 +160,7 @@ The maxY is also used for file naming, giving outputs names with the likes of (s
 
 ### Monitoring the system
 
-The database is the central control panel. It allows you to control each node individually, as well as modify the [global policies](#Database-Policies) controlling all nodes.
+The database is the central control panel. It allows you to control each node individually, as well as modify the [global policies](#database-policies) controlling all nodes.
 
 To provide a GUI interface for the database control system, there is a [HTML Interface](https://www.github.com/MarcusCemes/MasterMoviesMPP-interface) in development, that gives you an easy way to control nodes, policies and the addition/deletion of jobs. The login credentials are stored in the interface table. The passwords are hashed using the PHP password_hash function. The default login is: 'admin', 'password'.
 
@@ -174,28 +176,28 @@ To have a fully working system, you must have at least one of each node running 
 
 All communication with the system should be done through the database. Filesystem event triggers should not be relied on, as the output may not have finished encoding, or may have failed and is being rolled back to a previous state. These events may be useful, however, as a trigger to check the status with the database.
 
-The nodes can run across any network, as long as the database and work folder is accessible. There should only be one work folder for the entire system, as each node uses it for read and write operations, and file communication. They should not be accessible externally, as this is a server backend system. Any nodes that failed to unregister will be purged from the database after a certain period of inactivity (see [Database Policies](#Database-Policies)). Any node that was removed from the node table, which is still active, will terminate securely.
+The nodes can run across any network, as long as the database and work folder is accessible. There should only be one work folder for the entire system, as each node uses it for read and write operations, and file communication. They should not be accessible externally, as this is a server backend system. Any nodes that failed to unregister will be purged from the database after a certain period of inactivity (see [Database Policies](#database-policies)). Any node that was removed from the node table, which is still active, will terminate securely.
 
 It is possible that nodes could conflict by overwriting each other. Although this is theoretically impossible, mistakes happen, especially if the node is waiting on a FFmpeg operation and while its entry and assigned job are being manipulated on the database.
 
 Removing a job prematurely will not result in a purge of work folders, this would require manual cleaning. A safe way would be to deactivate ingest, finish all jobs, then clean all of the work directories.
 
-## How it works
+### How it works
 
-##### Ingest
+#### Ingest
 
 When a row is added with a status of 0 to the job table, an ingest node will pick it up. If the policy is active, it will verify the integrity of the video file, before splitting it into many segments by key frames. The job will then be updated to a status of 2, and relevant job openings created in the transcodeJob table.
 
-##### Transcode
+#### Transcode
 
-Transcode nodes will pick up an available transcode segment if a job is in the transcode stage. It will transcode that segment into all of active [outputs](#Outputs).
+Transcode nodes will pick up an available transcode segment if a job is in the transcode stage. It will transcode that segment into all of active [outputs](#outputs).
 After each transcode completion, it will check to see whether all transcodes are complete, in which case the job status will be upgraded to a status of 3
 
-##### Export
+#### Export
 
 Export nodes will actively search for transcoded jobs. When one is assigned, they will verify the presence of all transcoded file segments, rolling back and restarting the failed transcode jobs if necessary. If all are present, it will begin exporting each resolution, by fusing the all the video segments, while encoding the audio stream from the source file. The fused video stream and the newly encoded audio stream are output into the same video container, ready for delivery.
 
-##### Database Policies
+#### Database Policies
 
 Database policies allow you to apply global settings to each node. The following policies are availiable:
 
@@ -207,7 +209,7 @@ Database policies allow you to apply global settings to each node. The following
  * **verifyDuringIngest** - Whether the video integrity should be verified during ingest (requires decoding the entire video file)
  * **failureTolerance** - The amount of times a task can fail before the job is marked as a failure
 
-##### UUID Ecosystem
+#### UUID Ecosystem
 
 Each node and job is given a unique identifier, conform with [RFC 4122](https://tools.ietf.org/html/rfc4122). This UUID is used instead of the primary key when referencing jobs, tables and nodes. The 128-bit number is used in its 32 character hex-form when naming job folders, and stored as a 16-byte value in the database.
 
@@ -216,7 +218,7 @@ When a new UUID is generated, the database is double-checked for duplicates, des
 ## Built With
 
 * [Python 3](https://www.python.org/) - Python 3 Compile and Runtime Environment
-* [PyPi](https://pypi.python.org/pypi) - Python Dependency Management (see [Prerequisites](#Prerequisites))
+* [PyPi](https://pypi.python.org/pypi) - Python Dependency Management (see [Prerequisites](#prerequisites))
 * [FFmpeg](https://ffmpeg.org/) - Used to transcode video
 * [MySQL](https://www.mysql.com/) - Keep track of jobs, and inter-node communication.
 
