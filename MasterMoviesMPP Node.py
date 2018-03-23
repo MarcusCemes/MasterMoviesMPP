@@ -24,7 +24,6 @@ import configparser  # dependancy
 import MySQLdb   # External dependancy "mysqlclient"
 import colorama  # External dependancy
 
-os._exit(1)
 
 ### CLASSES ###
 
