@@ -65,7 +65,7 @@ CREATE TABLE `interface` (
 --
 
 INSERT INTO `interface` (`userID`, `username`, `password`) VALUES
-(1, 'admin', '$2y$10$qA7.LVmSUK/B4e1vY.F6iuTzj2qLRRhvGo1ljcCUEt/SS63ynyKXC');
+(1, 'admin', '$2y$10$bPzwKJNKu0qBrI.5vu4K6eFuuWroyoLUWFIdutkcfNVN1QJGrjy5q');
 
 -- --------------------------------------------------------
 
