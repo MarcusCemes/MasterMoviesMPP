@@ -1,12 +1,13 @@
 {
   "name": "MasterMovie MPP",
   "description": "Simple media processign platform powered by Python",
-  "author": Marcus Cemes",
+  "author": "Marcus Cemes",
   "version": "1.4.0",
   "devDependencies": {
-    "pytest": "^3.4.2"
+    "python": "^3.6.4",
+    "ffmpeg": "^3.4.2"
   },
   "scripts": {
-    "test": "pytest MasterMoviesMPP Node.py"
+    "test": "python 'MasterMoviesMPP Node.py' ingest"
   }
 }
