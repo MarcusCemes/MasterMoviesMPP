@@ -224,7 +224,7 @@ When a new UUID is generated, the database is double-checked for duplicates, des
 
 ## Versioning
 
-We use a relaxed form of [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/MarcusCemes/MasterMovieMPP/tags).
+We use a relaxed form of [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/MarcusCemes/MasterMoviesMPP/tags).
 
 ## Authors
 
