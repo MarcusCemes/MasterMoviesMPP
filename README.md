@@ -1,12 +1,12 @@
 # MasterMovies Media Processing Platform
 
 [![Build](https://img.shields.io/travis/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://travis-ci.org/MarcusCemes/MasterMoviesMPP)
-[![Downloads](https://img.shields.io/github/downloads/MarcusCemes/MasterMoviesMPP/total.svg?style=flat-square)]()
-[![GitHub release](https://img.shields.io/github/release/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](releases)
-[![GitHub code size](https://img.shields.io/github/languages/code-size/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)]()
+[![Downloads](https://img.shields.io/github/downloads/MarcusCemes/MasterMoviesMPP/total.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP)
+[![GitHub release](https://img.shields.io/github/release/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP/releases)
+[![GitHub code size](https://img.shields.io/github/languages/code-size/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP)
 [![License](https://img.shields.io/github/license/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](LICENSE.md)
 
-A lightweight distributed video backend with Python sauce doing the magic
+A lightweight distributed video backend with Python sauce doing the magic. This goes well with [this](https://github.com/MarcusCemes/MasterMoviesMPP-interface)
 
 ## Getting Started
 
@@ -79,7 +79,7 @@ $ mysql -u root -p -e "CREATE DATABASE MasterMoviesMPP;USE MasterMoviesMPP;" < M
 ```
 
 To create a new user, you will need to use the *mysql* command to execute SQL statements.
-```
+```bash
 $ mysql -u root -p
 mysql> CREATE USER 'useername'@'192.168.%.%' IDENTIFIED BY 'password';
 mysql> GRANT ALL PRIVILEGES ON MasterMoviesMPP.* TO 'username'@'192.168.%.%';
@@ -87,7 +87,7 @@ mysql> FLUSH PRIVILEGES;
 mysql> exit
 ```
 
-Lastly , if you plan on running nodes somewhere other than localhost, you will need to open the SQL server to the local network by editing the *my.cnf*, usually found somewhere like */etc/mysql/my.cnf* (this depends on your Linux distribution). Replace the line
+Lastly , if you plan on running nodes somewhere other than localhost, you will need to open the SQL server to the local network by editing the *my.cnf* (filename may vary), usually found somewhere like */etc/mysql/my.cnf* (this depends on your Linux distribution). Replace the line
 ```
 bind-address = 127.0.0.1
 # with:
@@ -162,7 +162,7 @@ The maxY is also used for file naming, giving outputs names with the likes of (s
 
 The database is the central control panel. It allows you to control each node individually, as well as modify the [global policies](#database-policies) controlling all nodes.
 
-To provide a GUI interface for the database control system, there is a [HTML Interface](https://www.github.com/MarcusCemes/MasterMoviesMPP-interface) in development, that gives you an easy way to control nodes, policies and the addition/deletion of jobs. The login credentials are stored in the interface table. The passwords are hashed using the PHP password_hash function. The default login is: 'admin', 'password'.
+To provide a GUI interface for the database control system, there is a [HTML Interface](https://github.com/MarcusCemes/MasterMoviesMPP-interface) in development, that gives you an easy way to control nodes, policies and the addition/deletion of jobs. The login credentials are stored in the interface table. The passwords are hashed using the PHP password_hash function. The default login is: 'admin', 'password'.
 
 You are free to create your own interface, the available database columns that offer control are:
 * MasterMoviesMPP.policy.value
@@ -224,11 +224,13 @@ When a new UUID is generated, the database is double-checked for duplicates, des
 
 ## Versioning
 
-We use a relaxed form of [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+We use a relaxed form of [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/MarcusCemes/MasterMoviesMPP/tags).
 
 ## Authors
 
 * **Marcus Cemes** - *Founder & Project Leader* - [MarcusCemes](https://github.com/MarcusCemes)
+
+This is a young project, started in January 2018. If you have any ideas, or would like to contribute, make a fork or hit the issues discussions.
 
 ## License
 
