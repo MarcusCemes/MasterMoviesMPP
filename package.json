@@ -20,7 +20,7 @@
     "ffmpeg": "^3.4.2"
   },
   "scripts": {
-    "test": "python 'MasterMoviesMPP Node.py' ingest"
+    "test": "python node.py ingest"
   },
   "tags": [
     "Python",

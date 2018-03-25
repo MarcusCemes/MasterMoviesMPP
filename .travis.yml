@@ -10,6 +10,7 @@ before_install:
   - sudo mysql MasterMoviesMPP < MasterMoviesMPP.sql
   - echo "SHOW DATABASES;" | mysql
   - sudo mkdir work work/source work/ingest work/transcode work/export work/media
+  - cp -a /.travis/. ./
 script:
   - python 'MasterMoviesMPP Node.py' ingest --build
   - python 'MasterMoviesMPP Node.py' transcode --build
