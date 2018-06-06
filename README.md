@@ -1,6 +1,6 @@
 # MasterMovies Media Processing Platform
 
-[![Build](https://img.shields.io/travis/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://travis-ci.org/MarcusCemes/MasterMoviesMPP)
+[![Build](https://img.shields.io/travis/MarcusCemes/MasterMoviesMPP/master.svg?style=flat-square)](https://travis-ci.org/MarcusCemes/MasterMoviesMPP)
 [![Downloads](https://img.shields.io/github/downloads/MarcusCemes/MasterMoviesMPP/total.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP)
 [![GitHub release](https://img.shields.io/github/release/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP/releases)
 [![GitHub code size](https://img.shields.io/github/languages/code-size/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP)
