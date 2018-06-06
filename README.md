@@ -8,6 +8,8 @@
 
 A lightweight distributed video backend with Python sauce doing the magic. This goes well with [this](https://github.com/MarcusCemes/MasterMoviesMPP-interface)
 
+![Image of the program](images/1.jpg)
+
 ## Getting Started
 
 The *MasterMovies Media Processing Platform* is a backend video transcode engine, supercharged with the Python programming language.
