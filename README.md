@@ -86,7 +86,7 @@ $ mysql -u root -p -e "CREATE DATABASE MasterMoviesMPP;USE MasterMoviesMPP;" < M
 To create a new user, you will need to use the *mysql* command to execute SQL statements.
 ```bash
 $ mysql -u root -p
-mysql> CREATE USER 'useername'@'192.168.%.%' IDENTIFIED BY 'password';
+mysql> CREATE USER 'username'@'192.168.%.%' IDENTIFIED BY 'password';
 mysql> GRANT ALL PRIVILEGES ON MasterMoviesMPP.* TO 'username'@'192.168.%.%';
 mysql> FLUSH PRIVILEGES;
 mysql> exit
