@@ -69,10 +69,8 @@ $ pip install -r requirements.txt
 ```
 You may need to use sudo if you don't have write permissions, but this isn't [recommended](http://docs.python-guide.org/en/latest/dev/virtualenvs/)
 
-<aside class="notice">
 On Linux, you may encounter an error when installing mysqlclient, "python setup.py egg_info failed with error code 1".
-The only way of fixing this I have found is by running  $ apt install libmysqlclient-dev
-</aside>
+A way of fixing this is by running `$ apt install libmysqlclient-dev`
 
 #### MySQL Database
 
