@@ -80,7 +80,8 @@ The following steps will guide you through the steps required to open connection
 
 To import the file from the terminal, create the database and append the .sql file:
 ```bash
-$ mysql -u root -p -e "CREATE DATABASE MasterMoviesMPP;USE MasterMoviesMPP;" < MasterMoviesMPP.sql
+$ mysql -u root -p -e "CREATE DATABASE MasterMoviesMPP"
+$ mysql -u root -p MasterMoviesMPP < MasterMoviesMPP.sql
 ```
 
 To create a new user, you will need to use the *mysql* command to execute SQL statements.
