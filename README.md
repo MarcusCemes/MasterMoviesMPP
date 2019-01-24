@@ -1,14 +1,18 @@
+*This project is **deprecated**. Despite working flawlessly, it is no longer actively maintained.*
+
 # MasterMovies Media Processing Platform
 
+![Stability](https://img.shields.io/badge/stability-deprecated-red.svg?style=flat-square)
 [![Build](https://img.shields.io/travis/MarcusCemes/MasterMoviesMPP/master.svg?style=flat-square)](https://travis-ci.org/MarcusCemes/MasterMoviesMPP)
-[![Downloads](https://img.shields.io/github/downloads/MarcusCemes/MasterMoviesMPP/total.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP)
 [![GitHub release](https://img.shields.io/github/release/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP/releases)
-[![GitHub code size](https://img.shields.io/github/languages/code-size/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](https://github.com/MarcusCemes/MasterMoviesMPP)
+![GitHub code size](https://img.shields.io/github/languages/code-size/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)
 [![License](https://img.shields.io/github/license/MarcusCemes/MasterMoviesMPP.svg?style=flat-square)](LICENSE.md)
 
 A lightweight distributed video backend with Python sauce doing the magic. This goes well with [this](https://github.com/MarcusCemes/MasterMoviesMPP-interface)
 
-![Image of the program](images/1.jpg)
+<p align="center">
+  <img width="800" src="images/export_example.png">
+</p>
 
 ## Getting Started
 
@@ -205,7 +209,7 @@ Export nodes will actively search for transcoded jobs. When one is assigned, the
 
 #### Database Policies
 
-Database policies allow you to apply global settings to each node. The following policies are availiable:
+Database policies allow you to apply global settings to each node. The following policies are available:
 
  * **ingestEnabled** - Authorises ingest nodes
  * **transcodeEnabled** - Authorises transcode nodes
@@ -243,7 +247,3 @@ This is a young project, started in January 2018. If you have any ideas, or woul
 This project is licensed under the GPL-3.0 License - see the [LICENSE.md](LICENSE.md) file for details
 
 *TL;DR* You may distribute, modify and use this software for private and commercial purposes, under the condition of preserving the license and copyright status. **Don't steal this.**
-
-## Acknowledgments
-
-* Thanks to [TurboThread](http://www.turbothread.com) for kick-starting this project
